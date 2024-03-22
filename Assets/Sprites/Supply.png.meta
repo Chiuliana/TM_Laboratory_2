@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 0a0a870ac2e8d4c9b935cf51b440b2c0
+guid: 394ec8e00888c44f7acff8f64fade51d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2971434665912712894
-    second: MENU 1_0
+      213: -8718980966713334515
+    second: Screenshot_2024-03-23_at_01.15.27-removebg-preview_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: MENU 1_0
+      name: Screenshot_2024-03-23_at_01.15.27-removebg-preview_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 512
-        height: 250
+        width: 370
+        height: 412
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,8 +114,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 241cdf82ae753c6d0800000000000000
-      internalID: -2971434665912712894
+      spriteID: d05e8a38105fff680800000000000000
+      internalID: -8718980966713334515
       vertices: []
       indices: 
       edges: []
@@ -130,7 +130,8 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Screenshot_2024-03-23_at_01.15.27-removebg-preview_0: -8718980966713334515
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -417,53 +417,53 @@ public class Instantiater : MonoBehaviour
 
             for (int j = 71; j <= 75; j++)
             {
-                cellsArray[j, 131] = 1;
-                cellsArray[j, 135] = 1;
+                cellsArray[j, 133] = 1;
                 cellsArray[j, 137] = 1;
+                cellsArray[j, 139] = 1;
             }
-            cellsArray[72, 132] = 1;
             cellsArray[72, 134] = 1;
-            cellsArray[73, 133] = 1;
+            cellsArray[72, 136] = 1;
+            cellsArray[73, 135] = 1;
 
-            cellsArray[71, 139] = 1;
-            cellsArray[72, 139] = 1;
-            cellsArray[73, 139] = 1;
-            cellsArray[74, 139] = 1;
-            cellsArray[75, 139] = 1;
-
-            cellsArray[72, 140] = 1;
+            cellsArray[71, 141] = 1;
+            cellsArray[72, 141] = 1;
             cellsArray[73, 141] = 1;
-            cellsArray[74, 142] = 1;
-            cellsArray[75, 143] = 1;
-            cellsArray[74, 143] = 1;
+            cellsArray[74, 141] = 1;
+            cellsArray[75, 141] = 1;
+
+            cellsArray[72, 142] = 1;
             cellsArray[73, 143] = 1;
-            cellsArray[72, 143] = 1;
-            cellsArray[71, 143] = 1;
-
-            cellsArray[71, 145] = 1;
-            cellsArray[72, 145] = 1;
-            cellsArray[73, 145] = 1;
-            cellsArray[74, 145] = 1;
+            cellsArray[74, 144] = 1;
             cellsArray[75, 145] = 1;
-
-            cellsArray[71, 146] = 1;
-            cellsArray[73, 146] = 1;
-            cellsArray[75, 146] = 1;
+            cellsArray[74, 145] = 1;
+            cellsArray[73, 145] = 1;
+            cellsArray[72, 145] = 1;
+            cellsArray[71, 145] = 1;
 
             cellsArray[71, 147] = 1;
+            cellsArray[72, 147] = 1;
+            cellsArray[73, 147] = 1;
+            cellsArray[74, 147] = 1;
             cellsArray[75, 147] = 1;
 
-            cellsArray[73, 149] = 1;
-            cellsArray[74, 149] = 1;
-            cellsArray[71, 150] = 1;
-            cellsArray[72, 150] = 1;
-            cellsArray[73, 150] = 1;
-            cellsArray[74, 150] = 1;
-            cellsArray[75, 150] = 1;
-            cellsArray[71, 151] = 1;
+            cellsArray[71, 148] = 1;
+            cellsArray[73, 148] = 1;
+            cellsArray[75, 148] = 1;
+
+            cellsArray[71, 149] = 1;
+            cellsArray[75, 149] = 1;
+
             cellsArray[73, 151] = 1;
             cellsArray[74, 151] = 1;
+            cellsArray[71, 152] = 1;
             cellsArray[72, 152] = 1;
+            cellsArray[73, 152] = 1;
+            cellsArray[74, 152] = 1;
+            cellsArray[75, 152] = 1;
+            cellsArray[71, 153] = 1;
+            cellsArray[73, 153] = 1;
+            cellsArray[74, 153] = 1;
+            cellsArray[72, 154] = 1;
         
             print(" MINE Zone ");
         }
