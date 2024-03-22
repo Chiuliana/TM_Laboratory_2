@@ -312,15 +312,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cellTemplate: {fileID: 1143719089843067537, guid: b38614024f0f9fb43bf296f391bfa913,
     type: 3}
-  cellGod: {fileID: 1143719089843067537, guid: 763a4acc09de48249bbc5ab12e5ed8a4, type: 3}
-  cellDiablo: {fileID: 1143719089843067537, guid: 45ea88b9136871340aa6c8d47de5f5b0,
+  cellLeader: {fileID: 1143719089843067537, guid: 763a4acc09de48249bbc5ab12e5ed8a4,
+    type: 3}
+  cellWarriot: {fileID: 1143719089843067537, guid: 45ea88b9136871340aa6c8d47de5f5b0,
     type: 3}
   cellIntr: {fileID: 1143719089843067537, guid: a31a57c6138e0674e83e3416f9229498,
     type: 3}
+  generationInterval: 0.2
   gridHeight: 90
   FertileZone: {fileID: 0}
   DeadZone: {fileID: 0}
-  simulationController: {fileID: 1975381014}
 --- !u!4 &13800575
 Transform:
   m_ObjectHideFlags: 0
@@ -1212,7 +1213,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -342, y: -176}
+  m_AnchoredPosition: {x: 325, y: -13}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1576593428
@@ -1650,7 +1651,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -164, y: -176}
+  m_AnchoredPosition: {x: 318, y: -61}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1975593272
@@ -2100,13 +2101,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2105805137}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 14.0811, y: 5.4493, z: -0}
-  m_LocalScale: {x: 0.8529051, y: 2.6024883, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 13.91, y: 6.34, z: -0}
+  m_LocalScale: {x: 1.0118324, y: 0.81957346, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 180}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2105805139
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2171,8 +2172,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5.12, y: 2.5}
-    newSize: {x: 5.12, y: 2.5}
+    oldSize: {x: 4.7, y: 8.21}
+    newSize: {x: 4.7, y: 8.21}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -2222,13 +2223,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: -2971434665912712894, guid: 0a0a870ac2e8d4c9b935cf51b440b2c0,
+  m_Sprite: {fileID: -8535300641792392351, guid: 7c0a7af33b20746aaa28a53f863609b5,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5.12, y: 2.5}
+  m_Size: {x: 4.7, y: 8.21}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -2301,7 +2302,7 @@ Canvas:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2144939699}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_RenderMode: 1
   m_Camera: {fileID: 519420031}

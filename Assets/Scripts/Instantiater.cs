@@ -7,13 +7,13 @@ using UnityEngine.UI;
 public class Instantiater : MonoBehaviour
 {   
     public GameObject cellTemplate;
-    public GameObject cellGod;
-    public GameObject cellDiablo;
+    public GameObject cellLeader;
+    public GameObject cellWarriot;
     public GameObject cellIntr;
 
 
 
-    float generationInterval = 0.2f;
+    public float generationInterval = 0.2f;
     public static bool pause = false;
 
     int[ , ] cellsArray;
@@ -33,20 +33,57 @@ public class Instantiater : MonoBehaviour
 
     private float cellSize;
 
-    bool programStarted = false;
-
     void Update()
+    {
+        // Check if the 's' key is pressed
+        if (Input.GetKeyDown(KeyCode.S))
         {
-            // Check if the 's' key is pressed
-            if (!programStarted && Input.GetKeyDown(KeyCode.S))
-            {
-                StartProgram();
-                programStarted = true; // Set flag to indicate program has started
-            }
+            // Start the program
+            StartProgram();
         }
 
+        // Check if the 'g' key is pressed to fill random cells
+        if (Input.GetKeyDown(KeyCode.G))
+        {
+            // Fill random cells in the area
+            FillRandomArea();
+        }
+    }
+
+        // Method to fill a random area with cells
+    public void FillRandomArea()
+    {
+        int startX = Random.Range(0, gridWidth); // Random start X position
+        int startY = Random.Range(0, gridHeight); // Random start Y position
+        int areaWidth = Random.Range(5, 15); // Random width of the area
+        int areaHeight = Random.Range(5, 15); // Random height of the area
+
+        for (int i = startY; i < startY + areaHeight && i < gridHeight; i++)
+        {
+            for (int j = startX; j < startX + areaWidth && j < gridWidth; j++)
+            {
+                cellsArray[i, j] = Random.Range(0, 2); // Randomly set cell state (0 or 1)
+            }
+        }
+    }
+    public void FillRandomCells()
+    {
+        // Clear existing cells
+        ClearCells();
+
+        // Fill random alive cells
+        for (int i = 0; i < 1500; i++)
+        {
+            cellsArray[Random.Range(0, gridHeight), Random.Range(0, gridWidth)] = 1;
+        }
+
+        // Render cells after filling random cells
+        RenderCells();
+    }
+
+
     // Method to start the program
-    void StartProgram()
+   public void StartProgram()
     {
         gridWidth = Mathf.RoundToInt(gridHeight * Camera.main.aspect);
 
@@ -233,7 +270,7 @@ public class Instantiater : MonoBehaviour
     }
 
 
-    void RenderCells(){
+    public void RenderCells(){
         foreach (GameObject cell in GameObject.FindGameObjectsWithTag("Cell")){
             Destroy(cell);
         }
@@ -257,7 +294,7 @@ public class Instantiater : MonoBehaviour
                         (cellSize * gridHeight) - (i * cellSize + cellSize / 2),
                         0
                     );
-                    Instantiate(cellGod, cellPosition, Quaternion.identity);
+                    Instantiate(cellLeader, cellPosition, Quaternion.identity);
                 }
                 if (cellsArray[i, j] == 3)
                 {
@@ -266,14 +303,14 @@ public class Instantiater : MonoBehaviour
                         (cellSize * gridHeight) - (i * cellSize + cellSize / 2),
                         0
                     );
-                    Instantiate(cellDiablo, cellPosition, Quaternion.identity);
+                    Instantiate(cellWarriot, cellPosition, Quaternion.identity);
                 }
             }
         }
 
     }
 
-    void ApplyRules()
+    public void ApplyRules()
     {
 
         FertileZone = GameObject.Find("FertileZone");
@@ -347,7 +384,7 @@ public class Instantiater : MonoBehaviour
         cellsArray = nextGenGrid; // GOING TO THE NEXT GEN!
     }
 
-    void UserEnvironment(int x, int y)
+    public void UserEnvironment(int x, int y)
     {//fertile zone
         if(x > 5 && x<20 && y > 5 && y < 20)
         {
@@ -432,7 +469,7 @@ public class Instantiater : MonoBehaviour
         }
     }
 
-    void Environment()
+    public void Environment()
     {
         if (zones)
         {
@@ -512,7 +549,6 @@ public class Instantiater : MonoBehaviour
         return false;
     }
 
-
     int CountLivingNeighbours(int i, int j){
         int result = 0;
         for (int iNeigh = i-1; iNeigh < i+2; iNeigh++){ // i-1, i, i+1
@@ -528,27 +564,5 @@ public class Instantiater : MonoBehaviour
         return result;
     }
 
-    // Reference to the SimulationController script
-    public SimulationController simulationController;
-
-    // Method to start simulation for a specified number of generations
-    public IEnumerator StartSimulation(int numGenerations)
-    {
-        // Start the simulation
-        for (int generation = 0; generation < numGenerations; generation++)
-        {
-            // Apply rules for each generation
-            ApplyRules();
-
-            // Render the cells for visualization
-            RenderCells();
-
-            // Optional: Delay between generations for visualization purposes
-            yield return new WaitForSeconds(generationInterval);
-        }
-
-        // After completing the simulation, stop the program
-        simulationController.StopProgram();
-    }
-
 }
+
