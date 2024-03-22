@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Instantiater : MonoBehaviour
 {   
@@ -32,8 +33,21 @@ public class Instantiater : MonoBehaviour
 
     private float cellSize;
 
-    // Start is called before the first frame update
-    void Start(){
+    bool programStarted = false;
+
+    void Update()
+        {
+            // Check if the 's' key is pressed
+            if (!programStarted && Input.GetKeyDown(KeyCode.S))
+            {
+                StartProgram();
+                programStarted = true; // Set flag to indicate program has started
+            }
+        }
+
+    // Method to start the program
+    void StartProgram()
+    {
         gridWidth = Mathf.RoundToInt(gridHeight * Camera.main.aspect);
 
         cellsArray = new int[gridHeight, gridWidth];
@@ -50,7 +64,8 @@ public class Instantiater : MonoBehaviour
         print(deadPos.x + " " + deadPos.y);
 
         // fill random alive cells
-        for (int i = 0; i < 1500; i++){
+        for (int i = 0; i < 1500; i++)
+        {
             cellsArray[Random.Range(20, 70), Random.Range(30, 120)] = 1; 
         }
 
@@ -87,7 +102,13 @@ public class Instantiater : MonoBehaviour
             if (pause == true) pause = false; else pause = true;
             print(" Pause " + pause);
             
-        } else if (Input.GetMouseButton(0))
+        } 
+        else if (Input.GetKey("c"))
+        {
+            ClearCells();
+        }
+        
+        else if (Input.GetMouseButton(0))
         {
             Vector3 point = new Vector3();
             Vector3 mousePos = Input.mousePosition;
@@ -127,7 +148,28 @@ public class Instantiater : MonoBehaviour
             }
             RenderCells();
         }
-        else if (Input.GetKey("o"))
+        else if (Input.GetKey("w"))
+        {
+            Vector3 point = new Vector3();
+            Vector3 mousePos = Input.mousePosition;
+            {
+                mousePos.y = cam.pixelHeight - mousePos.y;
+                point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
+
+                int x = 0;
+                int y = 0;
+                x = (int)((point.x - cellSize / 2) / cellSize);
+                y = (int)((point.y - cellSize / 2) / cellSize);
+
+                print(" x= " + x);
+                print(" y= " + y);
+                if (x > 0 && x < gridWidth && y > 0 && y < gridHeight) cellsArray[y, x] = 3;
+                print("Diablo cell");
+                if (zones) UserEnvironment(x, y);
+            }
+            RenderCells();
+        }
+        else if (Input.GetKey("a"))
         {
             Vector3 point = new Vector3();
             Vector3 mousePos = Input.mousePosition;
@@ -155,7 +197,7 @@ public class Instantiater : MonoBehaviour
             }
             RenderCells();
         }
-        else if (Input.GetKey("g"))
+        else if (Input.GetKey("r"))
         {
             Vector3 point = new Vector3();
             Vector3 mousePos = Input.mousePosition;
@@ -176,27 +218,18 @@ public class Instantiater : MonoBehaviour
             }
             RenderCells();
         }
-        else if (Input.GetKey("d"))
+    }
+
+    void ClearCells(){
+        // Reset all cells to 0 (dead)
+        for (int i = 0; i < gridHeight; i++)
         {
-            Vector3 point = new Vector3();
-            Vector3 mousePos = Input.mousePosition;
+            for (int j = 0; j < gridWidth; j++)
             {
-                mousePos.y = cam.pixelHeight - mousePos.y;
-                point = cam.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, cam.nearClipPlane));
-
-                int x = 0;
-                int y = 0;
-                x = (int)((point.x - cellSize / 2) / cellSize);
-                y = (int)((point.y - cellSize / 2) / cellSize);
-
-                print(" x= " + x);
-                print(" y= " + y);
-                if (x > 0 && x < gridWidth && y > 0 && y < gridHeight) cellsArray[y, x] = 3;
-                print("Diablo cell");
-                if (zones) UserEnvironment(x, y);
+                cellsArray[i, j] = 0;
             }
-            RenderCells();
         }
+    RenderCells(); // Update the visual representation of cells
     }
 
 
@@ -336,7 +369,7 @@ public class Instantiater : MonoBehaviour
             //print(" Dead Zone ");
         }
 
-        //meaw zone
+        //mine zone
         if (x > 130 && x < 153 && y > 70 && y < 80)
         {
             for (int i = 130; i <= 153; i++)
@@ -354,35 +387,48 @@ public class Instantiater : MonoBehaviour
             cellsArray[72, 132] = 1;
             cellsArray[72, 134] = 1;
             cellsArray[73, 133] = 1;
-            cellsArray[71, 138] = 1;
+
             cellsArray[71, 139] = 1;
-            cellsArray[73, 138] = 1;
-            cellsArray[75, 138] = 1;
+            cellsArray[72, 139] = 1;
+            cellsArray[73, 139] = 1;
+            cellsArray[74, 139] = 1;
             cellsArray[75, 139] = 1;
-            cellsArray[75, 141] = 1;
-            cellsArray[74, 141] = 1;
+
+            cellsArray[72, 140] = 1;
+            cellsArray[73, 141] = 1;
+            cellsArray[74, 142] = 1;
+            cellsArray[75, 143] = 1;
             cellsArray[74, 143] = 1;
-            cellsArray[73, 142] = 1;
-            cellsArray[72, 142] = 1;
+            cellsArray[73, 143] = 1;
+            cellsArray[72, 143] = 1;
             cellsArray[71, 143] = 1;
-            cellsArray[73, 144] = 1;
-            cellsArray[72, 144] = 1;
-            cellsArray[75, 145] = 1;
+
+            cellsArray[71, 145] = 1;
+            cellsArray[72, 145] = 1;
+            cellsArray[73, 145] = 1;
             cellsArray[74, 145] = 1;
-            cellsArray[74, 147] = 1;
-            cellsArray[73, 147] = 1;
-            cellsArray[72, 147] = 1;
+            cellsArray[75, 145] = 1;
+
+            cellsArray[71, 146] = 1;
+            cellsArray[73, 146] = 1;
+            cellsArray[75, 146] = 1;
+
             cellsArray[71, 147] = 1;
-            cellsArray[75, 148] = 1;
+            cellsArray[75, 147] = 1;
+
             cellsArray[73, 149] = 1;
-            cellsArray[72, 149] = 1;
             cellsArray[74, 149] = 1;
+            cellsArray[71, 150] = 1;
+            cellsArray[72, 150] = 1;
+            cellsArray[73, 150] = 1;
+            cellsArray[74, 150] = 1;
             cellsArray[75, 150] = 1;
-            cellsArray[74, 151] = 1;
-            cellsArray[73, 151] = 1;
-            cellsArray[72, 151] = 1;
             cellsArray[71, 151] = 1;
-            print(" MEAW Zone ");
+            cellsArray[73, 151] = 1;
+            cellsArray[74, 151] = 1;
+            cellsArray[72, 152] = 1;
+        
+            print(" MINE Zone ");
         }
     }
 
@@ -480,6 +526,29 @@ public class Instantiater : MonoBehaviour
         }
 
         return result;
+    }
+
+    // Reference to the SimulationController script
+    public SimulationController simulationController;
+
+    // Method to start simulation for a specified number of generations
+    public IEnumerator StartSimulation(int numGenerations)
+    {
+        // Start the simulation
+        for (int generation = 0; generation < numGenerations; generation++)
+        {
+            // Apply rules for each generation
+            ApplyRules();
+
+            // Render the cells for visualization
+            RenderCells();
+
+            // Optional: Delay between generations for visualization purposes
+            yield return new WaitForSeconds(generationInterval);
+        }
+
+        // After completing the simulation, stop the program
+        simulationController.StopProgram();
     }
 
 }
